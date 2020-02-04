@@ -1232,6 +1232,7 @@ public class IntegrationProcess : Process
             case RequestType.PartnersLogin:
                 try
                 {
+                    
                     Models.Login data = (Models.Login)Model;
                     Models.PartnersData loginData = Connection.Query<Models.PartnersData>(StoredProcedures.PARTNERS_LOGIN, new { _username = data.username, _password = data.password }, null, false, 60, CommandType.StoredProcedure).FirstOrDefault();
                     if (loginData == null)
@@ -1243,6 +1244,7 @@ public class IntegrationProcess : Process
                     {
                         return new LoginResponse { ResponseCode = 404, ResponsMessage = "We're still processing your request. Thank you!" };
                     }
+                    // 2 status means disapproved
                     if (loginData.isApproved == 2)
                     {
                         return new LoginResponse { ResponseCode = 404, ResponsMessage = "Your request was disapproved!" };

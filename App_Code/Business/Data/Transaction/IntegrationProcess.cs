@@ -1240,6 +1240,7 @@ public class IntegrationProcess : Process
                         _Logger.Info(string.Format("username: {0} password: {1}", data.username, data.password));
                         return new LoginResponse { ResponseCode = 404, ResponsMessage = "Invalid Credentials!" };
                     }
+                    // 0 status means pending
                     if (loginData.isApproved == 0)
                     {
                         return new LoginResponse { ResponseCode = 404, ResponsMessage = "We're still processing your request. Thank you!" };

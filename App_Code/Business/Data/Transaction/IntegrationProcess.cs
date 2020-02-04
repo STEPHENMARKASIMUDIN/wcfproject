@@ -20,11 +20,13 @@ public class IntegrationProcess : Process
 
     public IntegrationProcess()
     {
+        
         EmailInstance();
         SMSInstance();
     }
     private void EmailInstance()
     {
+        //single instance
         lock (emaillock)
         {
             if (_EmailHandler == null)
@@ -38,6 +40,7 @@ public class IntegrationProcess : Process
     {
         lock (smslock)
         {
+            //single instance
             if (_SMSHandler == null)
             {
                 _SMSHandler = new SMSHandler();
@@ -52,6 +55,7 @@ public class IntegrationProcess : Process
     //Partners Update    
     public override IResponse IntegrationTransaction(MySqlConnection Connection, MySqlTransaction Transaction, IModel Model, RequestType RType)
     {
+        
         switch (RType)
         {
             #region Approve Partner

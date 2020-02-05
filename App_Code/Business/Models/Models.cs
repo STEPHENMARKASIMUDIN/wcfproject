@@ -8,7 +8,7 @@ using System.Web;
 /// </summary>
 public abstract class Models : IModel
 {
-    public static string Path { get { return "C:\\kpconfig\\PartnersIntegration.ini"; } }
+    public static string Path { get { return "C:\\config\\.ini"; } }
     public abstract void EmailInstance();
     public abstract void SMSInstance();
     public class SMS
